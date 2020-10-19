@@ -3,18 +3,20 @@ const dataCacheName = 'my-data-cache';
 
 self.addEventListener('activate', e => self.clients.claim());
 
+const filesToCache = [
+  "/",
+  "/indexDB.js",
+  "/index.js",
+  "/manifest.json",
+  "/styles.css",
+  "/icons/icon-192x192.png",
+  "/icons/icon-512x512.png"
+]
+
 self.addEventListener('install', e => {
     e.waitUntil(
         caches.open(cacheName)
-        .then(cache => cache.addAll([
-          "/",
-          "/indexDB.js",
-          "/index.js",
-          "/manifest.json",
-          "/styles.css",
-          "/icons/icon-192x192.png",
-          "/icons/icon-512x512.png"
-      ]))
+        .then(cache => cache.addAll(filesToCache))
     );
 });
 
