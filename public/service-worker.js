@@ -1,7 +1,7 @@
 const cacheName = 'my-cache';
 const dataCacheName = 'my-data-cache';
 
-self.addEventListener('activate', e => self.clients.claim());
+// self.addEventListener('activate', e => self.clients.claim());
 
 const filesToCache = [
   "/",
@@ -19,6 +19,7 @@ self.addEventListener('install', e => {
         .then(cache => cache.addAll(filesToCache))
     );
 });
+
 
 self.addEventListener("fetch", function(event) {
     if (event.request.url.includes("/api/")) {

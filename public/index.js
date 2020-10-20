@@ -1,23 +1,22 @@
-// if ('serviceWorker' in navigator) {
-//   let registration;
-
-//   const registerServiceWorker = async () => {
-//       registration = await navigator.serviceWorker.register('./service-worker.js');
-//   };
-
-//   registerServiceWorker();
-// }
-
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./service-worker.js')
-  .then(() => {
-    // registration worked
-    console.log('Registration succeeded.');
-  }).catch((error) => {
-    // registration failed
-    console.log('Registration failed with ' + error);
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then((reg) => {
+        console.log('Service worker registered.', reg);
+      });
   });
 }
+
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('./service-worker.js')
+//   .then(() => {
+//     // registration worked
+//     console.log('Registration succeeded.');
+//   }).catch((error) => {
+//     // registration failed
+//     console.log('Registration failed with ' + error);
+//   });
+// }
 
 let transactions = [];
 let myChart;
